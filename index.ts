@@ -2,9 +2,9 @@ import express from "express"
 import cors from "cors"
 import pg from "pg"
 import dotenv from "dotenv"
-import messagesRouter from "./Routers/messages.ts"
-import usersRouter from "./Routers/users.ts"
-import pool from "./pg.ts"
+import messagesRouter from "./Routers/messages.js"
+import usersRouter from "./Routers/users.js"
+import pool from "./pg.js"
 import { rateLimit } from 'express-rate-limit'
 dotenv.config()
 
