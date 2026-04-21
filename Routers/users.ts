@@ -1,6 +1,6 @@
 import { Router } from "express"
 import bcrypt from "bcrypt"
-import pool from "../pg.ts"
+import pool from "../pg.js"
 
 
 

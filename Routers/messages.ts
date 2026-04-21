@@ -1,5 +1,5 @@
 import { Router } from "express"
-import pool from "../pg.ts"
+import pool from "../pg.js"
 
 const messagesRouter = Router()
 
