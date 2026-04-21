@@ -1,13 +1,9 @@
 import { Router } from "express"
 import bcrypt from "bcrypt"
-import rateLimit from "express-rate-limit"
+import { rateLimit } from 'express-rate-limit'
 import pool from "../pg.ts"
 
-const limiter=rateLimit({
-    windowMs:600000,
-    max:10000000,
-    message:{otvet:"manyResponces"}
-})
+
 
 
 

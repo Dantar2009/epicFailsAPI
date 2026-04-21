@@ -5,11 +5,21 @@ import dotenv from "dotenv"
 import messagesRouter from "./Routers/messages.ts"
 import usersRouter from "./Routers/users.ts"
 import pool from "./pg.ts"
+import { rateLimit } from 'express-rate-limit'
 dotenv.config()
 
 const app = express()
 
 
+const limiter = rateLimit({
+    windowMs: 60 * 1000, 
+    limit: 5,            
+    message: { otvet: "Слишком много запросов. Попробуйте позже." },
+    standardHeaders: true,
+    legacyHeaders: false,
+})
+
+app.use(limiter)
 
 
 app.use(cors({
