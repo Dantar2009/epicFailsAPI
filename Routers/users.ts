@@ -1,6 +1,5 @@
 import { Router } from "express"
 import bcrypt from "bcrypt"
-import { rateLimit } from 'express-rate-limit'
 import pool from "../pg.ts"
 
 
@@ -10,7 +9,7 @@ import pool from "../pg.ts"
 
 
 const usersRouter = Router()
-usersRouter.get("/getUsers",limiter, async(req, res) => {
+usersRouter.get("/getUsers", async(req, res) => {
     try {
         const data = await pool.query("SELECT * FROM users")  
         res.json({ otvet: data.rows })
@@ -18,7 +17,7 @@ usersRouter.get("/getUsers",limiter, async(req, res) => {
         res.status(500).json({ otvet: "Ошибка сервера" })
     }
 })
-usersRouter.post("/register",limiter, async(req, res) => { 
+usersRouter.post("/register", async(req, res) => { 
     try {
         let { name, pass }: { name: string, pass: string } = req.body
         
@@ -51,7 +50,7 @@ usersRouter.post("/register",limiter, async(req, res) => {
         res.status(500).json({ otvet: "Ошибка сервера" })
     }
 })
-usersRouter.post("/signin",limiter, async(req, res) => {
+usersRouter.post("/signin", async(req, res) => {
     try {
         const { name, pass }: { name: string, pass: string } = req.body
         
